@@ -155,13 +155,8 @@
                 </a>
             </div>
 
-            <!-- 手機版右側容器：語言選項 + 漢堡選單 -->
-            <div class="md:hidden flex items-center gap-4">
-                <div class="flex items-center gap-2">
-                    <span class="text-xs font-extrabold text-[#58663f] cursor-pointer border-b-2 border-[#f3eee4]">TW</span>
-                    <span class="text-xs font-extrabold text-[#7382a0] hover:text-[#475569] cursor-pointer">JP</span>
-                    <span class="text-xs font-extrabold text-[#7382a0] hover:text-[#475569] cursor-pointer">EN</span>
-                </div>
+            <!-- 手機版右側容器：僅保留漢堡選單 -->
+            <div class="md:hidden flex items-center">
                 <button id="mobile-menu-btn" class="w-10 h-10 bg-[#f3f0e8] rounded-full flex items-center justify-center text-[#334155] hover:bg-[#e7e1d4] focus:outline-none transition-colors">
                     <i data-lucide="menu" id="menu-icon" class="h-5 w-5"></i>
                     <i data-lucide="x" id="close-icon" class="h-5 w-5 hidden"></i>
@@ -173,6 +168,12 @@
     <!-- 手機版選單覆蓋層 -->
     <div id="mobile-menu" class="fixed inset-0 bg-[#fcfbf7]/95 backdrop-blur-3xl z-40 hidden flex flex-col justify-start px-8 opacity-0 transition-opacity duration-300 pt-28">
         <div class="flex flex-col space-y-6 text-center">
+            <div class="flex items-center justify-center gap-5 pb-2 text-sm font-extrabold tracking-[0.16em] uppercase">
+                <span class="text-[#58663f] border-b-2 border-[#58663f] pb-1">TW</span>
+                <span class="text-[#7382a0] hover:text-[#475569] cursor-pointer">JP</span>
+                <span class="text-[#7382a0] hover:text-[#475569] cursor-pointer">EN</span>
+            </div>
+            <div class="h-px w-20 bg-[#e7e1d4] mx-auto"></div>
             <a href="#about" class="mobile-link text-3xl font-bold text-slate-800 hover:text-brand-accent transition-colors">關於冠恆</a>
             <a href="#services" class="mobile-link text-3xl font-bold text-slate-800 hover:text-brand-accent transition-colors">服務項目</a>
             <a href="#team" class="mobile-link text-3xl font-bold text-slate-800 hover:text-brand-accent transition-colors">菁英團隊</a>
