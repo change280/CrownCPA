@@ -127,9 +127,7 @@
         <nav class="pointer-events-auto glass-oval w-full max-w-6xl border border-white/65 rounded-full px-6 py-3 flex justify-between items-center transition-all">
             <!-- Logo 區域 -->
             <div class="flex items-center gap-3 cursor-pointer">
-                <div class="w-10 h-10 rounded-full overflow-hidden border border-brand-muted/50 shadow-sm bg-white">
-                    <img src="冠恆logo.jpeg" alt="冠恆商標" class="w-full h-full object-cover" />
-                </div>
+                <img src="冠恆logo.png" alt="冠恆商標" class="w-10 h-10 object-contain flex-shrink-0" />
                 <div class="pt-2">
                     <h1 class="font-bold text-lg text-[#1f2937] tracking-tight leading-none">冠恆會計師事務所</h1>
                     <p class="text-[10px] text-[#5e6f87] font-extrabold tracking-[0.24em] uppercase mt-0.5">CrownCPA</p>
@@ -599,9 +597,9 @@
                 <!-- 品牌資訊 -->
                 <div class="lg:col-span-4">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-full overflow-hidden border border-white/30 bg-white">
-                            <img src="冠恆logo.jpeg" alt="冠恆商標" class="w-full h-full object-cover" />
-                        </div>
+                            <img src="冠恆logo.png" alt="冠恆商標" class="w-10 h-10 object-contain flex-shrink-0" />
+
+
                         <div>
                             <h2 class="font-bold text-white text-xl tracking-tight leading-none">冠恆會計師事務所</h2>
                             <p class="text-[10px] text-gray-400 font-bold tracking-[0.2em] uppercase mt-1">Crown & Co., CPAs</p>
@@ -611,8 +609,21 @@
                         知識整合的先驅，結合會計、稅務與法律雙引擎，為您的企業經營提供最堅實的護城河。
                     </p>
                     <div class="flex gap-4">
-                        <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-brand-primary cursor-pointer transition-all text-sm font-bold text-white">FB</div>
-                        <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-brand-primary cursor-pointer transition-all text-sm font-bold text-white">LINE</div>
+                        <a href="#" aria-label="Facebook" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-brand-primary text-white transition-all">
+                            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" aria-hidden="true">
+                                <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H16.8V4.8c-.3 0-1.3-.1-2.5-.1-2.4 0-4 1.5-4 4.2V11H7.5v3h2.8v8h3.2Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LINE" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-brand-primary text-white transition-all">
+                            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" aria-hidden="true">
+                                <path d="M20.2 10.4c0-4.4-3.7-7.9-8.2-7.9S3.8 6 3.8 10.4c0 4 2.9 7.3 6.8 7.9l-.3 2.4c0 .2.1.4.2.5.2.1.4.1.6 0l2.7-1.9h.2c4.5 0 8.2-3.5 8.2-7.9Zm-10 1.3H8.1V8.6h1.2v2h.9v1.1Zm1.9 0h-1.2V8.6h1.2v3.1Zm3.2 0h-1l-1.4-1.8v1.8h-1.1V8.6h1l1.4 1.8V8.6h1.1v3.1Zm2.8-2h-1.7v.5h1.7v1h-1.7v.5h1.7v1h-2.9V8.6h2.9v1.1Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Threads" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-brand-primary text-white transition-all">
+                            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current" stroke-width="1.8" aria-hidden="true">
+                                <path d="M16.5 10.2c-.2-2.1-1.7-3.3-4.3-3.3-2.9 0-4.7 1.6-4.7 4.7 0 3.4 2 5.4 5.3 5.4 2.7 0 4.5-1.4 4.5-3.7 0-2-1.4-3.2-3.8-3.2-2.2 0-3.6 1-3.6 2.7 0 1.5 1.2 2.5 2.9 2.5 1.3 0 2.2-.4 3-.9.8-.6 1.6-1.5 1.6-3.2 0-4-2.5-6.2-5.9-6.2-4.3 0-7.1 2.8-7.1 7.2 0 4.5 3 7.5 7.7 7.5 4 0 6.6-2.1 7.3-5.4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
@@ -623,9 +634,28 @@
                         <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
                             <i data-lucide="map-pin" class="w-6 h-6 text-brand-accent flex-shrink-0 mt-1"></i>
                             <div>
+                                <p class="text-white font-bold mb-1 text-lg">台北所</p>
+                                <p class="text-gray-400 text-sm mb-2">100 台北市中正區衡陽路7號11F</p>
+                                <p class="text-brand-accent text-sm font-mono font-medium">TEL: 02-23617033</p>
+                                <p class="text-gray-500 text-sm font-mono">FAX: 02-23615033</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-brand-accent flex-shrink-0 mt-1"></i>
+                            <div>
                                 <p class="text-white font-bold mb-1 text-lg">台中總所 (Headquarters)</p>
                                 <p class="text-gray-400 text-sm mb-2">403 台中市西區中興街183號9F-2</p>
-                                <p class="text-brand-accent text-sm font-mono font-medium">T: 04-2302-8277</p>
+                                <p class="text-brand-accent text-sm font-mono font-medium">TEL: 04-23028277</p>
+                                <p class="text-gray-500 text-sm font-mono">FAX: 04-23055087</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-brand-accent flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-white font-bold mb-1 text-lg">高雄所</p>
+                                <p class="text-gray-400 text-sm mb-2">802 高雄市苓雅區中正二路74號9F</p>
+                                <p class="text-brand-accent text-sm font-mono font-medium">TEL: 07-2259090</p>
+                                <p class="text-gray-500 text-sm font-mono">FAX: 07-2258986</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-3 text-gray-400 font-medium">
@@ -639,11 +669,12 @@
                 <div class="lg:col-span-3">
                     <h3 class="text-white font-bold mb-8 text-lg">快速導覽</h3>
                     <ul class="space-y-4 font-medium text-gray-400">
-                        <li><a href="#" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>公司簡介</a></li>
-                        <li><a href="#" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>核心服務</a></li>
-                        <li><a href="#" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>菁英團隊</a></li>
-                        <li><a href="#" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>出版著作</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>日商專區 (日本語)</a></li>
+                        <li><a href="#about" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>關於冠恆</a></li>
+                        <li><a href="#services" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>服務項目</a></li>
+                        <li><a href="#team" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>菁英團隊</a></li>
+                        <li><a href="#books" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>冠恆叢書</a></li>
+                        <li><a href="#resources" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>資源分享</a></li>
+                        <li><a href="#news" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>最新洞察</a></li>
                     </ul>
                 </div>
             </div>
