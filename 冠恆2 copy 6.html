@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrownCPA 冠恆聯合會計師事務所 | 現代創新</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置 Tailwind 暖調企業綠主題色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#f6f5ee',    /* 暖霧綠白 */
+                            muted: '#cfcdbb',    /* 暖鼠尾草 */
+                            accent: '#788c61',   /* 暖橄欖綠 */
+                            accentHover: '#687953',
+                            primary: '#596d50',  /* 主綠 */
+                            surface: '#687b5d',  /* 深綠卡片色 */
+                            dark: '#465846',     /* 墨綠 */
+                            crown: '#a96a6d',
+                            crownSoft: '#d8c1c3'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入 Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* 隱藏滾動條但保留功能 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+
+        .bg-grain {
+            background-image:
+                radial-gradient(rgba(255, 255, 255, 0.04) 0.8px, transparent 0.8px),
+                radial-gradient(rgba(32, 42, 28, 0.028) 0.8px, transparent 0.8px);
+            background-position: 0 0, 12px 12px;
+            background-size: 24px 24px;
+        }
+
+        .hero-wash {
+            background:
+                radial-gradient(circle at 16% 34%, rgba(246, 239, 224, 0.14), transparent 30%),
+                radial-gradient(circle at 76% 22%, rgba(207, 205, 187, 0.08), transparent 24%),
+                radial-gradient(circle at 74% 76%, rgba(216, 193, 195, 0.05), transparent 22%),
+                linear-gradient(135deg, #667757 0%, #596d50 46%, #53644b 100%);
+        }
+
+        .hero-grid {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+            background-size: 72px 72px;
+        }
+
+        .hero-photo-blend {
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            filter: saturate(78%) contrast(94%);
+            mix-blend-mode: soft-light;
+        }
+
+        .glass-oval {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.26));
+            backdrop-filter: blur(20px) saturate(145%);
+            -webkit-backdrop-filter: blur(20px) saturate(145%);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.62),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+                0 10px 28px rgba(20, 35, 24, 0.12);
+        }
+
+        .glass-pill {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.32));
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.7),
+                0 6px 20px rgba(44, 58, 45, 0.07);
+        }
+
+        .glass-cta {
+            background: linear-gradient(180deg, rgba(36, 63, 43, 0.92), rgba(24, 47, 31, 0.9));
+            backdrop-filter: blur(18px) saturate(130%);
+            -webkit-backdrop-filter: blur(18px) saturate(130%);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 10px 22px rgba(12, 26, 17, 0.18);
+        }
+
+        .hero-stats-shell {
+            background: linear-gradient(180deg, rgb(246, 247, 242), rgb(239, 241, 234));
+            box-shadow: 0 24px 48px rgba(41, 58, 40, 0.16);
+        }
+    </style>
+</head>
+<body class="bg-brand-light font-sans text-slate-800 antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- 現代懸浮導覽列 (Floating Pill Nav) -->
+    <div class="fixed w-full z-50 top-6 px-4 pointer-events-none flex justify-center transition-all duration-500" id="nav-container">
+        <nav class="pointer-events-auto glass-oval w-full max-w-6xl border border-white/65 rounded-full px-6 py-3 flex justify-between items-center transition-all">
+            <!-- Logo 區域 -->
+            <div class="flex items-center gap-3 cursor-pointer">
+                <div class="w-10 h-10 rounded-full overflow-hidden border border-brand-muted/50 shadow-sm bg-white">
+                    <img src="冠恆logo.jpeg" alt="冠恆商標" class="w-full h-full object-cover" />
+                </div>
+                <div class="pt-2">
+                    <h1 class="font-bold text-lg text-[#1f2937] tracking-tight leading-none">冠恆會計師事務所</h1>
+                    <p class="text-[10px] text-[#5e6f87] font-extrabold tracking-[0.24em] uppercase mt-0.5">CrownCPA</p>
+                </div>
+            </div>
+            
+            <!-- 桌面版選單 -->
+            <div class="hidden md:flex items-center space-x-1 glass-pill rounded-full p-1.5 border border-white/50">
+                <a href="#about" class="px-4 py-2 rounded-full text-sm font-semibold text-[#334155] hover:text-[#1f2937] hover:bg-white transition-all">關於冠恆</a>
+                <a href="#services" class="px-4 py-2 rounded-full text-sm font-semibold text-[#334155] hover:text-[#1f2937] hover:bg-white transition-all">服務項目</a>
+                <a href="#team" class="px-4 py-2 rounded-full text-sm font-semibold text-[#334155] hover:text-[#1f2937] hover:bg-white transition-all">菁英團隊</a>
+                <a href="#books" class="px-4 py-2 rounded-full text-sm font-semibold text-[#334155] hover:text-[#1f2937] hover:bg-white transition-all">冠恆叢書</a>
+                <a href="#resources" class="px-4 py-2 rounded-full text-sm font-semibold text-[#334155] hover:text-[#1f2937] hover:bg-white transition-all">資源分享</a>
+                <a href="#news" class="px-4 py-2 rounded-full text-sm font-semibold text-[#334155] hover:text-[#1f2937] hover:bg-white transition-all">最新洞察</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden md:flex items-center gap-2">
+                    <span class="text-xs font-extrabold text-[#58663f] cursor-pointer border-b-2 border-[#f3eee4]">TW</span>
+                    <span class="text-xs font-extrabold text-[#7382a0] hover:text-[#475569] cursor-pointer">JP</span>
+                    <span class="text-xs font-extrabold text-[#7382a0] hover:text-[#475569] cursor-pointer">EN</span>
+                </div>
+                <a href="#contact" class="hidden md:inline-flex px-6 py-2.5 glass-cta text-white rounded-full text-sm font-bold hover:bg-brand-surface hover:shadow-lg hover:shadow-brand-primary/25 transition-all active:scale-95 border border-white/10 md:ml-2">
+                    立即諮詢
+                </a>
+            </div>
+
+            <!-- 手機版右側容器：語言選項 + 漢堡選單 -->
+            <div class="md:hidden flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-extrabold text-[#58663f] cursor-pointer border-b-2 border-[#f3eee4]">TW</span>
+                    <span class="text-xs font-extrabold text-[#7382a0] hover:text-[#475569] cursor-pointer">JP</span>
+                    <span class="text-xs font-extrabold text-[#7382a0] hover:text-[#475569] cursor-pointer">EN</span>
+                </div>
+                <button id="mobile-menu-btn" class="w-10 h-10 bg-[#f3f0e8] rounded-full flex items-center justify-center text-[#334155] hover:bg-[#e7e1d4] focus:outline-none transition-colors">
+                    <i data-lucide="menu" id="menu-icon" class="h-5 w-5"></i>
+                    <i data-lucide="x" id="close-icon" class="h-5 w-5 hidden"></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 手機版選單覆蓋層 -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#fcfbf7]/95 backdrop-blur-3xl z-40 hidden flex flex-col justify-start px-8 opacity-0 transition-opacity duration-300 pt-28">
+        <div class="flex flex-col space-y-6 text-center">
+            <a href="#about" class="mobile-link text-3xl font-bold text-slate-800 hover:text-brand-accent transition-colors">關於冠恆</a>
+            <a href="#services" class="mobile-link text-3xl font-bold text-slate-800 hover:text-brand-accent transition-colors">服務項目</a>
+            <a href="#team" class="mobile-link text-3xl font-bold text-slate-800 hover:text-brand-accent transition-colors">菁英團隊</a>
+            <a href="#books" class="mobile-link text-3xl font-bold text-slate-800 hover:text-brand-accent transition-colors">冠恆叢書</a>
+            <a href="#resources" class="mobile-link text-3xl font-bold text-slate-800 hover:text-brand-accent transition-colors">資源分享</a>
+            <a href="#news" class="mobile-link text-3xl font-bold text-slate-800 hover:text-brand-accent transition-colors">最新洞察</a>
+            <div class="h-px w-12 bg-[#e7e1d4] mx-auto my-4"></div>
+            <a href="#contact" class="mobile-link px-8 py-4 bg-brand-primary text-white rounded-full text-lg font-bold mx-auto w-full max-w-xs shadow-xl shadow-brand-primary/20">聯絡我們</a>
+        </div>
+    </div>
+
+    <!-- 視覺震撼首頁 Hero Section -->
+    <section class="relative min-h-[90vh] lg:min-h-screen hero-wash overflow-hidden rounded-b-[3rem] lg:rounded-b-[5rem] flex items-center pt-24 pb-32">
+        <!-- 動態發光球體背景 -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div class="absolute inset-0 hero-photo-blend opacity-[0.22]"></div>
+            <div class="absolute inset-0 bg-grain opacity-35"></div>
+            <div class="absolute inset-0 bg-dots opacity-16"></div>
+            <div class="absolute inset-0 hero-grid opacity-[0.06]"></div>
+            <div class="absolute -top-[8%] -left-[10%] w-[42vw] h-[42vw] rounded-full bg-[#f4ecdc]/10 blur-[120px]"></div>
+            <div class="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-brand-accent/16 blur-[100px] animate-blob"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-brand-muted/18 blur-[120px] animate-blob animation-delay-2000"></div>
+            <div class="absolute top-[40%] left-[20%] w-[30vw] h-[30vw] rounded-full bg-[#d8d0bf]/14 blur-[90px] animate-blob animation-delay-4000"></div>
+            <div class="absolute right-[7%] top-[24%] w-[26vw] h-[26vw] rounded-full border border-white/26"></div>
+            <div class="absolute left-[5%] bottom-[10%] w-[34vw] h-[34vw] rounded-full border border-white/22"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.10),transparent_34%)]"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-[repeat(13,minmax(0,1fr))] gap-10 lg:gap-12 items-center">
+                <div class="lg:col-span-8 order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-brand-muted text-sm font-bold mb-8 backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                        30年專業傳承・知識整合先驅
+                    </div>
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-8 tracking-tight">
+                        重塑商業未來<br />
+                        用<span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-muted">權威與創新</span>護航。
+                    </h1>
+                    <p class="text-lg md:text-xl text-brand-light/70 mb-10 leading-relaxed max-w-2xl font-medium">
+                        冠恆打破傳統會計框架，結合稅務、法律與商業洞察，為具有全球視野的企業提供全方位風險管理與增長策略。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="px-8 py-4 bg-brand-accent text-white font-bold rounded-full hover:bg-brand-accentHover transition-colors text-center flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(120,140,97,0.18)] hover:shadow-[0_0_48px_rgba(255,255,255,0.24)]">
+                            啟動企業健檢 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <button class="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-full hover:bg-white/10 transition-all text-center backdrop-blur-md flex items-center justify-center gap-2 group">
+                            <i data-lucide="play-circle" class="w-5 h-5 group-hover:text-brand-accent transition-colors"></i> 觀看品牌理念
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 右側所長肖像主視覺 -->
+                <div class="lg:col-span-5 relative order-1 mt-6 lg:order-2 lg:pl-2">
+                    <div class="absolute -inset-6 bg-gradient-to-tr from-brand-accent/35 via-brand-muted/10 to-transparent rounded-[2.5rem] blur-3xl"></div>
+                    <div class="relative w-full max-w-[500px] mx-auto lg:max-w-[560px] lg:mr-0 animate-float">
+                        <div class="relative w-full aspect-[3/4] rounded-[2.4rem] overflow-hidden border border-white/22 bg-white/10 backdrop-blur-sm shadow-[0_30px_80px_rgba(24,47,31,0.35)]">
+                            <img src="IMG_6650.png" alt="冠恆所長張進德肖像" class="absolute inset-0 w-full h-full object-cover object-[20%_-28%] scale-[1.36]" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#1e3125]/65 via-transparent to-transparent"></div>
+                            <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#203527]/78 to-transparent"></div>
+                        </div>
+                        <div class="absolute -left-6 lg:-left-12 bottom-8 lg:bottom-10 rounded-2xl border border-white/28 bg-[#6f7963]/78 backdrop-blur-xl p-4 sm:p-5 w-[72%] sm:w-[66%] shadow-[0_16px_42px_rgba(15,30,20,0.34)]">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-9 h-9 rounded-full bg-brand-accent flex items-center justify-center">
+                                    <i data-lucide="badge-check" class="w-5 h-5 text-[#163324]"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[11px] sm:text-xs tracking-[0.16em] text-brand-light/80 font-extrabold uppercase">Founder &amp; CEO</div>
+                                    <div class="text-xl sm:text-2xl font-black text-white tracking-tight">張進德 博士</div>
+                                </div>
+                            </div>
+                            <p class="text-xs sm:text-sm text-brand-light/80 leading-relaxed font-bold">美國會計學博士 / 法學博士<br />三十年企業風險防護與跨域治理實戰</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 數據徽章列 (Stats Section) -->
+    <section class="relative z-20 -mt-12 lg:-mt-8 px-4 sm:px-6 lg:px-8 mb-24">
+        <div class="max-w-6xl mx-auto hero-stats-shell rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden">
+            <div class="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-slate-200/60">
+                <div class="text-center px-4 py-8 lg:py-10 hover:bg-brand-accent/5 transition-colors group">
+                    <div class="w-12 h-12 rounded-full bg-brand-accent/10 mx-auto flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-brand-accent"></i>
+                    </div>
+                    <div class="text-4xl lg:text-5xl font-bold text-slate-800 leading-none mb-2">100<span class="text-brand-accent font-light">+</span></div>
+                    <div class="text-sm font-semibold text-slate-500">跨國企業成功輔導</div>
+                </div>
+                
+                <div class="text-center px-4 py-8 lg:py-10 hover:bg-brand-accent/5 transition-colors group">
+                    <div class="w-12 h-12 rounded-full bg-brand-accent/10 mx-auto flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-brand-accent"></i>
+                    </div>
+                    <div class="text-4xl lg:text-5xl font-bold text-slate-800 leading-none mb-2">30<span class="text-brand-accent font-light">+</span></div>
+                    <div class="text-sm font-semibold text-slate-500">年深厚法商實務經驗</div>
+                </div>
+                
+                <div class="text-center px-4 py-8 lg:py-10 hover:bg-brand-accent/5 transition-colors group">
+                    <div class="w-12 h-12 rounded-full bg-brand-accent/10 mx-auto flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="globe-2" class="w-5 h-5 text-brand-accent"></i>
+                    </div>
+                    <div class="text-4xl lg:text-5xl font-bold text-slate-800 leading-none mb-2">3</div>
+                    <div class="text-sm font-semibold text-slate-500">台日核心城市據點</div>
+                </div>
+                
+                <!-- 引導了解更多的特殊區塊 -->
+                <div class="text-center px-4 py-8 lg:py-10 flex flex-col items-center justify-center bg-slate-50/50 hover:bg-slate-100 transition-colors cursor-pointer group">
+                    <div class="w-12 h-12 rounded-full bg-brand-primary text-white flex items-center justify-center mb-4 shadow-md group-hover:bg-brand-accent transition-colors">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 group-hover:rotate-12 transition-transform"></i>
+                    </div>
+                    <div class="text-xl font-bold text-slate-800 mb-1">核心優勢</div>
+                    <div class="text-sm font-semibold text-brand-accent">為何選擇冠恆 <span class="tracking-tighter">--&gt;</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 現代 Bento Box 服務項目 -->
+    <section id="services" class="py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-8 h-1 bg-brand-accent rounded-full"></span>
+                        <h2 class="text-sm font-bold tracking-widest text-brand-primary uppercase">Core Services</h2>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
+                        全方位整合方案，<br/>驅動企業永續成長。
+                    </h2>
+                </div>
+                <p class="text-slate-600 font-medium max-w-sm">從新創設立、跨國投資到上市櫃輔導，我們提供一站式、跨領域的專業顧問服務。</p>
+            </div>
+
+            <!-- Bento 網格佈局 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 lg:gap-8">
+                
+                <!-- 大卡片 1: 上市櫃 -->
+                <div class="md:col-span-2 md:row-span-1 bg-white rounded-[2rem] p-8 lg:p-10 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between overflow-hidden relative">
+                    <div class="absolute right-0 top-0 w-64 h-64 bg-brand-light rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
+                    <div>
+                        <div class="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="bar-chart-2" class="w-7 h-7 text-brand-accent"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900 mb-3">上市櫃輔導與簽證</h3>
+                        <p class="text-slate-600 leading-relaxed max-w-md">提供專業財務報表簽證、資本額查核，以及企業上市上櫃之完整規劃與輔導，助您邁向資本市場。</p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-2 text-brand-primary font-bold group-hover:text-brand-accentHover transition-colors cursor-pointer">
+                        <span>探索細節</span> <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- 高卡片 2: 稅務規劃 -->
+                <div class="md:col-span-1 md:row-span-2 bg-brand-primary text-white rounded-[2rem] p-8 lg:p-10 shadow-lg hover:shadow-2xl hover:shadow-brand-primary/20 hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    <div class="relative z-10 flex-grow">
+                        <div class="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="calculator" class="w-7 h-7 text-brand-accent"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3">稅務規劃與咨詢服務</h3>
+                        <p class="text-brand-light/80 leading-relaxed mb-8">針對企業與個人提供國內外稅務諮詢、行政救濟及跨國企業移轉訂價風險評估。精準掌控稅務風險，優化企業財務結構。</p>
+                    </div>
+                    <div class="relative z-10 mt-auto pt-8 border-t border-white/10 flex justify-between items-center">
+                        <span class="font-bold text-brand-accent group-hover:text-white transition-colors">專案諮詢</span>
+                        <div class="w-10 h-10 rounded-full bg-brand-accent/20 flex items-center justify-center group-hover:bg-brand-accent group-hover:text-brand-primary transition-colors">
+                            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 小卡片 3: 法律與風險 -->
+                <div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-light transition-colors">
+                        <i data-lucide="scale" class="w-6 h-6 text-brand-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-2">法律與風險管理</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">結合會計與法律專業，提供企業經營法律風險管理、契約審閱及勞資爭議處理。</p>
+                </div>
+
+                <!-- 小卡片 4: 工商登記 -->
+                <div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-light transition-colors">
+                        <i data-lucide="building-2" class="w-6 h-6 text-brand-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-slate-900 mb-2">工商登記與特許</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">代辦各類公司設立、變更登記、特許業務申請，及商標專利註冊服務。</p>
+                </div>
+
+            </div>
+
+            <!-- 下方兩張卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mt-6 lg:mt-8">
+                 <!-- 寬卡片 5: 跨國投資 -->
+                 <div class="bg-gradient-to-r from-brand-light to-white rounded-[2rem] p-8 lg:p-10 shadow-sm border border-brand-muted/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-center">
+                    <div class="flex items-start gap-6">
+                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm flex-shrink-0">
+                            <i data-lucide="globe-2" class="w-8 h-8 text-brand-accent"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-slate-900 mb-2">ＥＳＧ 永續發展</h3>
+                            <p class="text-slate-600 leading-relaxed mb-4"></p>
+                            <a href="#" class="inline-flex items-center gap-1 text-sm font-bold text-brand-accent hover:text-brand-accentHover transition-colors">
+                                了解詳情 <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 寬卡片 6: 會計與帳務 -->
+                <div class="bg-white rounded-[2rem] p-8 lg:p-10 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 group flex flex-col justify-center">
+                    <div class="flex items-start gap-6">
+                        <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center group-hover:bg-brand-primary group-hover:text-brand-accent transition-colors flex-shrink-0">
+                            <i data-lucide="book-open" class="w-8 h-8 text-slate-400 group-hover:text-brand-accent"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-slate-900 mb-2">會計與帳務處理</h3>
+                            <p class="text-slate-600 leading-relaxed mb-4">企業日常帳務處理、營業稅申報、薪資計算及各類扣繳申報，為您建立健全的內控與會計制度。</p>
+                            <a href="#" class="inline-flex items-center gap-1 text-sm font-bold text-brand-primary hover:text-brand-accentHover transition-colors">
+                                了解詳情 <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 顛覆傳統的關於我們 -->
+    <section id="about" class="py-24 bg-white relative overflow-hidden">
+        <!-- 裝飾浮水印 -->
+        <div class="absolute -left-20 top-20 text-[200px] font-black text-slate-50 opacity-50 select-none pointer-events-none tracking-tighter leading-none">CROWN</div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <!-- 左側圖片組 -->
+                <div class="relative">
+                    <div class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl relative">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="現代辦公環境" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-brand-primary/20 mix-blend-multiply"></div>
+                    </div>
+                    <!-- 懸浮體驗卡片 -->
+                    <div class="absolute -bottom-10 -right-4 lg:-right-12 bg-white p-8 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] max-w-[280px] border border-slate-100 animate-float">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-brand-light rounded-full flex items-center justify-center">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-accentHover"></i>
+                            </div>
+                            <div>
+                                <div class="font-black text-slate-900 text-xl">事前防範</div>
+                                <div class="text-xs font-bold text-slate-500 uppercase">Risk Management</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 font-medium">我們深信，企業的法律與稅務風險，防範永遠重於事後補救。</p>
+                    </div>
+                </div>
+
+                <!-- 右側文字 -->
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <span class="w-8 h-1 bg-brand-accent rounded-full"></span>
+                        <h2 class="text-sm font-bold tracking-widest text-brand-primary uppercase">About Us</h2>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight">
+                        會計與法律雙引擎，<br/>打造堅不可摧的企業護城河。
+                    </h2>
+                    
+                    <div class="space-y-6 text-lg text-slate-600 font-medium mb-10">
+                        <p>
+                            在全球化競爭與合規要求日益嚴格的今天，企業需要的不再只是記帳與報稅的傳統會計師。
+                        </p>
+                        <p>
+                            冠恆聯合會計師事務所自創立以來，即秉持<strong class="text-brand-primary bg-brand-light px-2 py-0.5 rounded">「權威、正派、熱誠」</strong>的核心價值。我們是少數能真正<span class="text-brand-accentHover font-bold">全方位整合會計與法律思維</span>的專業智庫，將「租稅法律風險管理」納入每一次的商業決策中。
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <div class="flex -space-x-4">
+                            <img class="w-12 h-12 rounded-full border-2 border-white shadow-sm object-cover" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Team">
+                            <img class="w-12 h-12 rounded-full border-2 border-white shadow-sm object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Team">
+                            <img class="w-12 h-12 rounded-full border-2 border-white shadow-sm object-cover" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Team">
+                            <div class="w-12 h-12 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-600 z-10">+20</div>
+                        </div>
+                        <div>
+                            <div class="font-black text-slate-900">頂尖跨領域顧問團隊</div>
+                            <div class="text-sm text-slate-500 font-medium">涵蓋會計師、律師與企管專家</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 菁英團隊 (聚焦領航者) -->
+    <section id="team" class="py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-primary rounded-[3rem] overflow-hidden shadow-2xl">
+                <div class="grid lg:grid-cols-2">
+                    <div class="p-12 lg:p-20 flex flex-col justify-center relative">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-surface rounded-bl-[100px] -z-0"></div>
+                        <div class="relative z-10">
+                            <h2 class="text-sm font-bold tracking-widest text-brand-accent uppercase mb-4">Founder & Managing Partner</h2>
+                            <h3 class="text-4xl md:text-5xl font-black text-white mb-6">張進德 博士</h3>
+                            <p class="text-brand-light/80 text-lg leading-relaxed mb-8">
+                                擁有美國聯邦國際大學會計學博士與國立中正大學法學博士雙學位。曾任財政部審查員、大學管理學院院長，具備超過三十年的實務與學術底蘊。
+                            </p>
+                            <ul class="space-y-4 mb-10">
+                                <li class="flex items-center gap-3 text-white font-medium">
+                                    <div class="w-6 h-6 rounded-full bg-brand-accent/20 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i></div>
+                                    引領台灣企業租稅法律風險管理先河
+                                </li>
+                                <li class="flex items-center gap-3 text-white font-medium">
+                                    <div class="w-6 h-6 rounded-full bg-brand-accent/20 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i></div>
+                                    出版《國際稅法》等多部權威著作
+                                </li>
+                            </ul>
+                            <button class="px-8 py-4 bg-white text-brand-primary font-bold rounded-full hover:bg-brand-accent transition-colors">
+                                認識完整團隊陣容
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 右側張進德肖像照 -->
+                    <div class="bg-brand-dark min-h-[400px] relative overflow-hidden flex items-center justify-center">
+                        <img src="肖像.png" alt="張進德博士肖像" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-gradient-to-l from-transparent to-brand-primary opacity-30"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新洞察 (News) 卡片設計 -->
+    <section id="news" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <h2 class="text-sm font-bold tracking-widest text-brand-primary uppercase mb-4">Insights & News</h2>
+                    <h2 class="text-4xl font-black text-slate-900 tracking-tight">前沿觀點與最新動態</h2>
+                </div>
+                <button class="hidden md:flex items-center gap-2 w-12 h-12 rounded-full border-2 border-slate-200 justify-center hover:border-brand-primary hover:bg-brand-primary hover:text-white transition-all group">
+                    <i data-lucide="arrow-right" class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 洞察 1 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-[2rem] aspect-[4/3] mb-6 bg-slate-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="News" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="px-3 py-1 bg-brand-accent text-brand-primary text-xs font-bold rounded-full mb-2 inline-block">專業出版</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm text-slate-500 font-bold">2026/02/13</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-primary transition-colors line-clamp-2 leading-snug">
+                        財團法人企業大學通訊第524期：最新稅制變革與因應策略解析
+                    </h3>
+                </a>
+
+                <!-- 洞察 2 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-[2rem] aspect-[4/3] mb-6 bg-slate-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="News" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="px-3 py-1 bg-white text-slate-900 text-xs font-bold rounded-full mb-2 inline-block">活動講座</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm text-slate-500 font-bold">2025/08/28</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-primary transition-colors line-clamp-2 leading-snug">
+                        台中場：企業租稅法律風險管理研討會 (名額有限，開放報名中)
+                    </h3>
+                </a>
+
+                <!-- 洞察 3 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-[2rem] aspect-[4/3] mb-6 bg-slate-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="News" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <span class="px-3 py-1 bg-brand-accent text-white text-xs font-bold rounded-full mb-2 inline-block">國際視野</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm text-slate-500 font-bold">2025/04/24</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-primary transition-colors line-clamp-2 leading-snug">
+                        台日企業經營論壇：日商來台投資的常見稅務陷阱與避險實務
+                    </h3>
+                </a>
+            </div>
+            
+            <div class="mt-10 md:hidden flex justify-center">
+                <button class="px-8 py-3 rounded-full border-2 border-slate-200 font-bold text-slate-600 hover:border-brand-primary hover:bg-brand-primary hover:text-white transition-all">
+                    瀏覽所有文章
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 超大 Call to Action 區塊 + Footer -->
+    <footer id="contact" class="bg-brand-dark pt-0">
+        <!-- 突破邊界的 CTA 區塊 -->
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative -translate-y-12">
+            <div class="bg-brand-accent rounded-[3rem] p-12 lg:p-16 text-center shadow-[0_20px_50px_rgba(95,145,111,0.18)]">
+                <h2 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">準備好強化您的企業體質了嗎？</h2>
+                <p class="text-brand-light font-medium text-lg mb-10 max-w-2xl mx-auto">
+                    不論是日常帳務、重大投資決策，還是跨國稅務佈局，冠恆的菁英團隊隨時為您待命。
+                </p>
+                <button class="px-10 py-5 bg-brand-primary text-white text-lg font-bold rounded-full hover:bg-white hover:text-brand-primary transition-colors shadow-xl flex items-center justify-center gap-3 mx-auto group">
+                    立即預約專業諮詢 <i data-lucide="message-square" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-12">
+            <div class="grid lg:grid-cols-12 gap-12 mb-16 border-b border-white/10 pb-16">
+                <!-- 品牌資訊 -->
+                <div class="lg:col-span-4">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full overflow-hidden border border-white/30 bg-white">
+                            <img src="冠恆logo.jpeg" alt="冠恆商標" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-white text-xl tracking-tight leading-none">冠恆會計師事務所</h2>
+                            <p class="text-[10px] text-gray-400 font-bold tracking-[0.2em] uppercase mt-1">Crown & Co., CPAs</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 font-medium leading-relaxed mb-8 pr-4">
+                        知識整合的先驅，結合會計、稅務與法律雙引擎，為您的企業經營提供最堅實的護城河。
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-brand-primary cursor-pointer transition-all text-sm font-bold text-white">FB</div>
+                        <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent hover:text-brand-primary cursor-pointer transition-all text-sm font-bold text-white">LINE</div>
+                    </div>
+                </div>
+
+                <!-- 聯絡資訊 -->
+                <div class="lg:col-span-5">
+                    <h3 class="text-white font-bold mb-8 text-lg">全台服務據點</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-brand-accent flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-white font-bold mb-1 text-lg">台中總所 (Headquarters)</p>
+                                <p class="text-gray-400 text-sm mb-2">403 台中市西區中興街183號9F-2</p>
+                                <p class="text-brand-accent text-sm font-mono font-medium">T: 04-2302-8277</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-400 font-medium">
+                            <i data-lucide="building" class="w-5 h-5 text-gray-500"></i>
+                            <p>台北・台中・高雄 竭誠為您服務</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快速連結 -->
+                <div class="lg:col-span-3">
+                    <h3 class="text-white font-bold mb-8 text-lg">快速導覽</h3>
+                    <ul class="space-y-4 font-medium text-gray-400">
+                        <li><a href="#" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>公司簡介</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>核心服務</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>菁英團隊</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>出版著作</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>日商專區 (日本語)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-medium">
+                <p>© 2026 Crown & Co., CPAs 冠恆聯合會計師事務所. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">隱私權政策</a>
+                    <a href="#" class="hover:text-white transition-colors">免責聲明</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 頁面互動 JavaScript -->
+    <script>
+        // 頁面加載時重置滾動位置到頂部
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+        });
+
+        // 初始化 Lucide 圖示
+        lucide.createIcons();
+
+        // 導覽列懸浮與滾動效果
+        const navContainer = document.getElementById('nav-container');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            
+            // 處理導覽列外觀
+            if (currentScroll > 50) {
+                navContainer.classList.add('top-2');
+                navContainer.classList.remove('top-6');
+            } else {
+                navContainer.classList.add('top-6');
+                navContainer.classList.remove('top-2');
+            }
+            
+            // 向下滾動隱藏導覽列，向上滾動顯示 (增強沉浸感)
+            if (currentScroll > lastScroll && currentScroll > 200) {
+                // 向下滾動
+                navContainer.style.transform = 'translateY(-150%)';
+            } else {
+                // 向上滾動
+                navContainer.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+
+        // 手機版全螢幕選單切換
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                // 延遲一小段時間再加透明度動畫，否則看不出效果
+                setTimeout(() => mobileMenu.classList.remove('opacity-0'), 10);
+                document.body.style.overflow = 'hidden'; // 防止背景滾動
+            } else {
+                mobileMenu.classList.add('opacity-0');
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                document.body.style.overflow = '';
+            }
+            
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // 點擊手機版選單連結後自動關閉選單
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('opacity-0');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 300);
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
